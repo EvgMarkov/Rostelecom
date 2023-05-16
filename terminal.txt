@@ -1,0 +1,1010 @@
+for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="t-btn-tab-phone"]"}
+E         (Session info: chrome=113.0.5672.94)
+E       Stacktrace:
+E       Backtrace:
+E               GetHandleVerifier [0x00F3DCE3+50899]
+E               (No symbol) [0x00ECE111]
+E               (No symbol) [0x00DD5588]
+E               (No symbol) [0x00E008F9]
+E               (No symbol) [0x00E00AFB]
+E               (No symbol) [0x00E2F902]
+E               (No symbol) [0x00E1B944]
+E               (No symbol) [0x00E2E01C]
+E               (No symbol) [0x00E1B6F6]
+E               (No symbol) [0x00DF7708]
+E               (No symbol) [0x00DF886D]
+E               GetHandleVerifier [0x011A3EAE+2566302]
+E               GetHandleVerifier [0x011D92B1+2784417]
+E               GetHandleVerifier [0x011D327C+2759788]
+E               GetHandleVerifier [0x00FD5740+672048]
+E               (No symbol) [0x00ED8872]
+E               (No symbol) [0x00ED41C8]
+E               (No symbol) [0x00ED42AB]
+E               (No symbol) [0x00EC71B7]
+E               BaseThreadInitThunk [0x76A6D109+25]
+E               RtlExpandEnvironmentStrings_U [0x7788250D+493]
+E               RtlExpandEnvironmentStrings_U [0x778824E1+449]
+
+..\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py:245: NoSuchElementException
+---------------------------------------------------------------------------------------- Captured stdout setup ----------------------------------------------------------------------------------------
+
+Test number: a18d33d5-9644-4e1f-a143-26dff561b43c
+
+------------------------------------------------------------------------------------------- pytest-selenium -------------------------------------------------------------------------------------------
+Driver log: C:\Users\evgen\AppData\Local\Temp\pytest-of-evgen\pytest-1\test_auth_by_bad_format_email_0\driver.log
+URL: https://b2c.passport.rt.ru/account_b2c/page
+-------------------------------------------------------------------------------------- Captured stdout teardown ---------------------------------------------------------------------------------------
+
+Screenshot with error: a18d33d5-9644-4e1f-a143-26dff561b43c.png
+
+---------------------------------------------------------------------------------------- Captured log teardown ----------------------------------------------------------------------------------------
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x03ADE250>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/59eb60a88e3e
+7d8567327892630b6476
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x03ADE2F8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/59eb60a88e3e
+7d8567327892630b6476
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x03ADE3B8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/59eb60a88e3e
+7d8567327892630b6476
+_________________________________________________________________________________________ test_auth_by_phone __________________________________________________________________________________________
+
+web_browser = <selenium.webdriver.chrome.webdriver.WebDriver (session="f23d69f6f3b31d036ab66d27a86903e4")>
+
+    def test_auth_by_phone(web_browser):
+        """ Тест-кейс AT-001: авторизация по номеру телефона """
+
+>       page = AuthPage(web_browser)
+
+tests\test_positive_auth.py:15:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages\auth_page.py:18: in __init__
+    self.tab_phone = driver.find_element(*AuthLocators.TAB_PHONE)
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:831: in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:440: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x03ADEB20>
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"no such element: Unable to locate element: {\...109+25]\\n\\tRtlExpandEnvironmentStrings_U [0x7788250D+493]\\n\\tRtl
+ExpandEnvironmentStrings_U [0x778824E1+449]\\n"}}'}
+
+    def check_response(self, response: Dict[str, Any]) -> None:
+        """Checks that a JSON response from the WebDriver does not have an
+        error.
+
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+
+        :Raises: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                import json
+
+                try:
+                    value = json.loads(value_json)
+                    if len(value) == 1:
+                        value = value["value"]
+                    status = value.get("error", None)
+                    if not status:
+                        status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                        message = value.get("value") or value.get("message")
+                        if not isinstance(message, str):
+                            value = message
+                            message = message.get("message")
+                    else:
+                        message = value.get("message", None)
+                except ValueError:
+                    pass
+
+        exception_class: Type[WebDriverException]
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:
+            exception_class = NoSuchShadowRootException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif (
+            status in ErrorCode.INVALID_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER
+        ):
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="t-btn-tab-phone"]"}
+E         (Session info: chrome=113.0.5672.94)
+E       Stacktrace:
+E       Backtrace:
+E               GetHandleVerifier [0x00F3DCE3+50899]
+E               (No symbol) [0x00ECE111]
+E               (No symbol) [0x00DD5588]
+E               (No symbol) [0x00E008F9]
+E               (No symbol) [0x00E00AFB]
+E               (No symbol) [0x00E2F902]
+E               (No symbol) [0x00E1B944]
+E               (No symbol) [0x00E2E01C]
+E               (No symbol) [0x00E1B6F6]
+E               (No symbol) [0x00DF7708]
+E               (No symbol) [0x00DF886D]
+E               GetHandleVerifier [0x011A3EAE+2566302]
+E               GetHandleVerifier [0x011D92B1+2784417]
+E               GetHandleVerifier [0x011D327C+2759788]
+E               GetHandleVerifier [0x00FD5740+672048]
+E               (No symbol) [0x00ED8872]
+E               (No symbol) [0x00ED41C8]
+E               (No symbol) [0x00ED42AB]
+E               (No symbol) [0x00EC71B7]
+E               BaseThreadInitThunk [0x76A6D109+25]
+E               RtlExpandEnvironmentStrings_U [0x7788250D+493]
+E               RtlExpandEnvironmentStrings_U [0x778824E1+449]
+
+..\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py:245: NoSuchElementException
+---------------------------------------------------------------------------------------- Captured stdout setup ----------------------------------------------------------------------------------------
+
+Test number: 62bb5565-0aa5-4096-be95-40ca371f24f1
+
+------------------------------------------------------------------------------------------- pytest-selenium -------------------------------------------------------------------------------------------
+Driver log: C:\Users\evgen\AppData\Local\Temp\pytest-of-evgen\pytest-1\test_auth_by_phone0\driver.log
+URL: https://b2c.passport.rt.ru/account_b2c/page
+-------------------------------------------------------------------------------------- Captured stdout teardown ---------------------------------------------------------------------------------------
+
+Screenshot with error: 62bb5565-0aa5-4096-be95-40ca371f24f1.png
+
+---------------------------------------------------------------------------------------- Captured log teardown ----------------------------------------------------------------------------------------
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x014335C8>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f23d69f6f3b3
+1d036ab66d27a86903e4
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x01433760>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f23d69f6f3b3
+1d036ab66d27a86903e4
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x01433C70>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f23d69f6f3b3
+1d036ab66d27a86903e4
+_________________________________________________________________________________________ test_auth_by_email __________________________________________________________________________________________
+
+web_browser = <selenium.webdriver.chrome.webdriver.WebDriver (session="e1a8d463b27c791867ea5f31ece6b319")>
+
+    def test_auth_by_email(web_browser):
+        """ Тест-кейс AT-002: авторизация по емейлу """
+
+>       page = AuthPage(web_browser)
+
+tests\test_positive_auth.py:48:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages\auth_page.py:18: in __init__
+    self.tab_phone = driver.find_element(*AuthLocators.TAB_PHONE)
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:831: in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:440: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x03A770D0>
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"no such element: Unable to locate element: {\...109+25]\\n\\tRtlExpandEnvironmentStrings_U [0x7788250D+493]\\n\\tRtl
+ExpandEnvironmentStrings_U [0x778824E1+449]\\n"}}'}
+
+    def check_response(self, response: Dict[str, Any]) -> None:
+        """Checks that a JSON response from the WebDriver does not have an
+        error.
+
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+
+        :Raises: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                import json
+
+                try:
+                    value = json.loads(value_json)
+                    if len(value) == 1:
+                        value = value["value"]
+                    status = value.get("error", None)
+                    if not status:
+                        status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                        message = value.get("value") or value.get("message")
+                        if not isinstance(message, str):
+                            value = message
+                            message = message.get("message")
+                    else:
+                        message = value.get("message", None)
+                except ValueError:
+                    pass
+
+        exception_class: Type[WebDriverException]
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:
+            exception_class = NoSuchShadowRootException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif (
+            status in ErrorCode.INVALID_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER
+        ):
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="t-btn-tab-phone"]"}
+E         (Session info: chrome=113.0.5672.94)
+E       Stacktrace:
+E       Backtrace:
+E               GetHandleVerifier [0x00F3DCE3+50899]
+E               (No symbol) [0x00ECE111]
+E               (No symbol) [0x00DD5588]
+E               (No symbol) [0x00E008F9]
+E               (No symbol) [0x00E00AFB]
+E               (No symbol) [0x00E2F902]
+E               (No symbol) [0x00E1B944]
+E               (No symbol) [0x00E2E01C]
+E               (No symbol) [0x00E1B6F6]
+E               (No symbol) [0x00DF7708]
+E               (No symbol) [0x00DF886D]
+E               GetHandleVerifier [0x011A3EAE+2566302]
+E               GetHandleVerifier [0x011D92B1+2784417]
+E               GetHandleVerifier [0x011D327C+2759788]
+E               GetHandleVerifier [0x00FD5740+672048]
+E               (No symbol) [0x00ED8872]
+E               (No symbol) [0x00ED41C8]
+E               (No symbol) [0x00ED42AB]
+E               (No symbol) [0x00EC71B7]
+E               BaseThreadInitThunk [0x76A6D109+25]
+E               RtlExpandEnvironmentStrings_U [0x7788250D+493]
+E               RtlExpandEnvironmentStrings_U [0x778824E1+449]
+
+..\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py:245: NoSuchElementException
+---------------------------------------------------------------------------------------- Captured stdout setup ----------------------------------------------------------------------------------------
+
+Test number: a2f316b3-80f5-4513-89a9-37183355aa60
+
+------------------------------------------------------------------------------------------- pytest-selenium -------------------------------------------------------------------------------------------
+Driver log: C:\Users\evgen\AppData\Local\Temp\pytest-of-evgen\pytest-1\test_auth_by_email0\driver.log
+URL: https://b2c.passport.rt.ru/account_b2c/page
+-------------------------------------------------------------------------------------- Captured stdout teardown ---------------------------------------------------------------------------------------
+
+Screenshot with error: a2f316b3-80f5-4513-89a9-37183355aa60.png
+
+---------------------------------------------------------------------------------------- Captured log teardown ----------------------------------------------------------------------------------------
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x042E6340>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/e1a8d463b27c
+791867ea5f31ece6b319
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x042E6F70>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/e1a8d463b27c
+791867ea5f31ece6b319
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x042E6D18>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/e1a8d463b27c
+791867ea5f31ece6b319
+___________________________________________________________________________________ test_auth_in_any_tab[By email] ____________________________________________________________________________________
+
+username = 'evgenjamar@mail.ru', username_title = 'Почта', web_browser = <selenium.webdriver.chrome.webdriver.WebDriver (session="8503ebd4b74bc8c6339d2648f114f7c6")>
+
+    @pytest.mark.parametrize(("username, username_title"),
+                                [
+                                    (valid_email, u"Почта"),
+                                    #(valid_login, u"Логин"),
+                                    #(valid_ls, u"Лицевой счёт"),
+                                    (valid_phone, u"Телефон")
+                                ],
+                                ids= [
+                                    'By email',
+                                    #'By login',
+                                    #"By LS",
+                                    "By phone"]
+                             )
+    def test_auth_in_any_tab(username, username_title, web_browser):
+        """ Тест-кейс AT-005: авторизация по любому username без смены таба """
+
+>       page = AuthPage(web_browser)
+
+tests\test_positive_auth.py:159:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages\auth_page.py:18: in __init__
+    self.tab_phone = driver.find_element(*AuthLocators.TAB_PHONE)
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:831: in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:440: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x042E60D0>
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"no such element: Unable to locate element: {\...109+25]\\n\\tRtlExpandEnvironmentStrings_U [0x7788250D+493]\\n\\tRtl
+ExpandEnvironmentStrings_U [0x778824E1+449]\\n"}}'}
+
+    def check_response(self, response: Dict[str, Any]) -> None:
+        """Checks that a JSON response from the WebDriver does not have an
+        error.
+
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+
+        :Raises: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                import json
+
+                try:
+                    value = json.loads(value_json)
+                    if len(value) == 1:
+                        value = value["value"]
+                    status = value.get("error", None)
+                    if not status:
+                        status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                        message = value.get("value") or value.get("message")
+                        if not isinstance(message, str):
+                            value = message
+                            message = message.get("message")
+                    else:
+                        message = value.get("message", None)
+                except ValueError:
+                    pass
+
+        exception_class: Type[WebDriverException]
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:
+            exception_class = NoSuchShadowRootException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif (
+            status in ErrorCode.INVALID_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER
+        ):
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="t-btn-tab-phone"]"}
+E         (Session info: chrome=113.0.5672.94)
+E       Stacktrace:
+E       Backtrace:
+E               GetHandleVerifier [0x00F3DCE3+50899]
+E               (No symbol) [0x00ECE111]
+E               (No symbol) [0x00DD5588]
+E               (No symbol) [0x00E008F9]
+E               (No symbol) [0x00E00AFB]
+E               (No symbol) [0x00E2F902]
+E               (No symbol) [0x00E1B944]
+E               (No symbol) [0x00E2E01C]
+E               (No symbol) [0x00E1B6F6]
+E               (No symbol) [0x00DF7708]
+E               (No symbol) [0x00DF886D]
+E               GetHandleVerifier [0x011A3EAE+2566302]
+E               GetHandleVerifier [0x011D92B1+2784417]
+E               GetHandleVerifier [0x011D327C+2759788]
+E               GetHandleVerifier [0x00FD5740+672048]
+E               (No symbol) [0x00ED8872]
+E               (No symbol) [0x00ED41C8]
+E               (No symbol) [0x00ED42AB]
+E               (No symbol) [0x00EC71B7]
+E               BaseThreadInitThunk [0x76A6D109+25]
+E               RtlExpandEnvironmentStrings_U [0x7788250D+493]
+E               RtlExpandEnvironmentStrings_U [0x778824E1+449]
+
+..\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py:245: NoSuchElementException
+---------------------------------------------------------------------------------------- Captured stdout setup ----------------------------------------------------------------------------------------
+
+Test number: 256e6721-cbb5-4dba-8a0a-91f14d2f77fe
+
+------------------------------------------------------------------------------------------- pytest-selenium -------------------------------------------------------------------------------------------
+Driver log: C:\Users\evgen\AppData\Local\Temp\pytest-of-evgen\pytest-1\test_auth_in_any_tab_By_email_0\driver.log
+URL: https://b2c.passport.rt.ru/
+-------------------------------------------------------------------------------------- Captured stdout teardown ---------------------------------------------------------------------------------------
+
+Screenshot with error: 256e6721-cbb5-4dba-8a0a-91f14d2f77fe.png
+
+---------------------------------------------------------------------------------------- Captured log teardown ----------------------------------------------------------------------------------------
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x013E9A90>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/8503ebd4b74b
+c8c6339d2648f114f7c6
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x013E9670>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/8503ebd4b74b
+c8c6339d2648f114f7c6
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x013E9118>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/8503ebd4b74b
+c8c6339d2648f114f7c6
+___________________________________________________________________________________ test_auth_in_any_tab[By phone] ____________________________________________________________________________________
+
+username = '+7(9269390545', username_title = 'Телефон', web_browser = <selenium.webdriver.chrome.webdriver.WebDriver (session="f44dbdf2d5bc356e54357198dc4ac951")>
+
+    @pytest.mark.parametrize(("username, username_title"),
+                                [
+                                    (valid_email, u"Почта"),
+                                    #(valid_login, u"Логин"),
+                                    #(valid_ls, u"Лицевой счёт"),
+                                    (valid_phone, u"Телефон")
+                                ],
+                                ids= [
+                                    'By email',
+                                    #'By login',
+                                    #"By LS",
+                                    "By phone"]
+                             )
+    def test_auth_in_any_tab(username, username_title, web_browser):
+        """ Тест-кейс AT-005: авторизация по любому username без смены таба """
+
+>       page = AuthPage(web_browser)
+
+tests\test_positive_auth.py:159:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+pages\auth_page.py:18: in __init__
+    self.tab_phone = driver.find_element(*AuthLocators.TAB_PHONE)
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:831: in find_element
+    return self.execute(Command.FIND_ELEMENT, {"using": by, "value": value})["value"]
+..\venv\lib\site-packages\selenium\webdriver\remote\webdriver.py:440: in execute
+    self.error_handler.check_response(response)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x00F34FB8>
+response = {'status': 404, 'value': '{"value":{"error":"no such element","message":"no such element: Unable to locate element: {\...109+25]\\n\\tRtlExpandEnvironmentStrings_U [0x7788250D+493]\\n\\tRtl
+ExpandEnvironmentStrings_U [0x778824E1+449]\\n"}}'}
+
+    def check_response(self, response: Dict[str, Any]) -> None:
+        """Checks that a JSON response from the WebDriver does not have an
+        error.
+
+        :Args:
+         - response - The JSON response from the WebDriver server as a dictionary
+           object.
+
+        :Raises: If the response contains an error message.
+        """
+        status = response.get("status", None)
+        if not status or status == ErrorCode.SUCCESS:
+            return
+        value = None
+        message = response.get("message", "")
+        screen: str = response.get("screen", "")
+        stacktrace = None
+        if isinstance(status, int):
+            value_json = response.get("value", None)
+            if value_json and isinstance(value_json, str):
+                import json
+
+                try:
+                    value = json.loads(value_json)
+                    if len(value) == 1:
+                        value = value["value"]
+                    status = value.get("error", None)
+                    if not status:
+                        status = value.get("status", ErrorCode.UNKNOWN_ERROR)
+                        message = value.get("value") or value.get("message")
+                        if not isinstance(message, str):
+                            value = message
+                            message = message.get("message")
+                    else:
+                        message = value.get("message", None)
+                except ValueError:
+                    pass
+
+        exception_class: Type[WebDriverException]
+        if status in ErrorCode.NO_SUCH_ELEMENT:
+            exception_class = NoSuchElementException
+        elif status in ErrorCode.NO_SUCH_FRAME:
+            exception_class = NoSuchFrameException
+        elif status in ErrorCode.NO_SUCH_SHADOW_ROOT:
+            exception_class = NoSuchShadowRootException
+        elif status in ErrorCode.NO_SUCH_WINDOW:
+            exception_class = NoSuchWindowException
+        elif status in ErrorCode.STALE_ELEMENT_REFERENCE:
+            exception_class = StaleElementReferenceException
+        elif status in ErrorCode.ELEMENT_NOT_VISIBLE:
+            exception_class = ElementNotVisibleException
+        elif status in ErrorCode.INVALID_ELEMENT_STATE:
+            exception_class = InvalidElementStateException
+        elif (
+            status in ErrorCode.INVALID_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR
+            or status in ErrorCode.INVALID_XPATH_SELECTOR_RETURN_TYPER
+        ):
+            exception_class = InvalidSelectorException
+        elif status in ErrorCode.ELEMENT_IS_NOT_SELECTABLE:
+            exception_class = ElementNotSelectableException
+        elif status in ErrorCode.ELEMENT_NOT_INTERACTABLE:
+            exception_class = ElementNotInteractableException
+        elif status in ErrorCode.INVALID_COOKIE_DOMAIN:
+            exception_class = InvalidCookieDomainException
+        elif status in ErrorCode.UNABLE_TO_SET_COOKIE:
+            exception_class = UnableToSetCookieException
+        elif status in ErrorCode.TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.SCRIPT_TIMEOUT:
+            exception_class = TimeoutException
+        elif status in ErrorCode.UNKNOWN_ERROR:
+            exception_class = WebDriverException
+        elif status in ErrorCode.UNEXPECTED_ALERT_OPEN:
+            exception_class = UnexpectedAlertPresentException
+        elif status in ErrorCode.NO_ALERT_OPEN:
+            exception_class = NoAlertPresentException
+        elif status in ErrorCode.IME_NOT_AVAILABLE:
+            exception_class = ImeNotAvailableException
+        elif status in ErrorCode.IME_ENGINE_ACTIVATION_FAILED:
+            exception_class = ImeActivationFailedException
+        elif status in ErrorCode.MOVE_TARGET_OUT_OF_BOUNDS:
+            exception_class = MoveTargetOutOfBoundsException
+        elif status in ErrorCode.JAVASCRIPT_ERROR:
+            exception_class = JavascriptException
+        elif status in ErrorCode.SESSION_NOT_CREATED:
+            exception_class = SessionNotCreatedException
+        elif status in ErrorCode.INVALID_ARGUMENT:
+            exception_class = InvalidArgumentException
+        elif status in ErrorCode.NO_SUCH_COOKIE:
+            exception_class = NoSuchCookieException
+        elif status in ErrorCode.UNABLE_TO_CAPTURE_SCREEN:
+            exception_class = ScreenshotException
+        elif status in ErrorCode.ELEMENT_CLICK_INTERCEPTED:
+            exception_class = ElementClickInterceptedException
+        elif status in ErrorCode.INSECURE_CERTIFICATE:
+            exception_class = InsecureCertificateException
+        elif status in ErrorCode.INVALID_COORDINATES:
+            exception_class = InvalidCoordinatesException
+        elif status in ErrorCode.INVALID_SESSION_ID:
+            exception_class = InvalidSessionIdException
+        elif status in ErrorCode.UNKNOWN_METHOD:
+            exception_class = UnknownMethodException
+        else:
+            exception_class = WebDriverException
+        if not value:
+            value = response["value"]
+        if isinstance(value, str):
+            raise exception_class(value)
+        if message == "" and "message" in value:
+            message = value["message"]
+
+        screen = None  # type: ignore[assignment]
+        if "screen" in value:
+            screen = value["screen"]
+
+        stacktrace = None
+        st_value = value.get("stackTrace") or value.get("stacktrace")
+        if st_value:
+            if isinstance(st_value, str):
+                stacktrace = st_value.split("\n")
+            else:
+                stacktrace = []
+                try:
+                    for frame in st_value:
+                        line = frame.get("lineNumber", "")
+                        file = frame.get("fileName", "<anonymous>")
+                        if line:
+                            file = f"{file}:{line}"
+                        meth = frame.get("methodName", "<anonymous>")
+                        if "className" in frame:
+                            meth = f"{frame['className']}.{meth}"
+                        msg = "    at %s (%s)"
+                        msg = msg % (meth, file)
+                        stacktrace.append(msg)
+                except TypeError:
+                    pass
+        if exception_class == UnexpectedAlertPresentException:
+            alert_text = None
+            if "data" in value:
+                alert_text = value["data"].get("text")
+            elif "alert" in value:
+                alert_text = value["alert"].get("text")
+            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here
+>       raise exception_class(message, screen, stacktrace)
+E       selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="t-btn-tab-phone"]"}
+E         (Session info: chrome=113.0.5672.94)
+E       Stacktrace:
+E       Backtrace:
+E               GetHandleVerifier [0x00F3DCE3+50899]
+E               (No symbol) [0x00ECE111]
+E               (No symbol) [0x00DD5588]
+E               (No symbol) [0x00E008F9]
+E               (No symbol) [0x00E00AFB]
+E               (No symbol) [0x00E2F902]
+E               (No symbol) [0x00E1B944]
+E               (No symbol) [0x00E2E01C]
+E               (No symbol) [0x00E1B6F6]
+E               (No symbol) [0x00DF7708]
+E               (No symbol) [0x00DF886D]
+E               GetHandleVerifier [0x011A3EAE+2566302]
+E               GetHandleVerifier [0x011D92B1+2784417]
+E               GetHandleVerifier [0x011D327C+2759788]
+E               GetHandleVerifier [0x00FD5740+672048]
+E               (No symbol) [0x00ED8872]
+E               (No symbol) [0x00ED41C8]
+E               (No symbol) [0x00ED42AB]
+E               (No symbol) [0x00EC71B7]
+E               BaseThreadInitThunk [0x76A6D109+25]
+E               RtlExpandEnvironmentStrings_U [0x7788250D+493]
+E               RtlExpandEnvironmentStrings_U [0x778824E1+449]
+
+..\venv\lib\site-packages\selenium\webdriver\remote\errorhandler.py:245: NoSuchElementException
+---------------------------------------------------------------------------------------- Captured stdout setup ----------------------------------------------------------------------------------------
+
+Test number: 23e401e8-506a-4772-bcbb-2670d1a712c0
+
+------------------------------------------------------------------------------------------- pytest-selenium -------------------------------------------------------------------------------------------
+Driver log: C:\Users\evgen\AppData\Local\Temp\pytest-of-evgen\pytest-1\test_auth_in_any_tab_By_phone_0\driver.log
+URL: https://b2c.passport.rt.ru/account_b2c/page
+-------------------------------------------------------------------------------------- Captured stdout teardown ---------------------------------------------------------------------------------------
+
+Screenshot with error: 23e401e8-506a-4772-bcbb-2670d1a712c0.png
+
+---------------------------------------------------------------------------------------- Captured log teardown ----------------------------------------------------------------------------------------
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x013E8280>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f44dbdf2d5bc
+356e54357198dc4ac951
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x013E8E50>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f44dbdf2d5bc
+356e54357198dc4ac951
+WARNING  urllib3.connectionpool:connectionpool.py:812 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection
+.HTTPConnection object at 0x013E8580>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/f44dbdf2d5bc
+356e54357198dc4ac951
+========================================================================================== warnings summary ===========================================================================================
+tests/test_auth_page_elements.py: 13 warnings
+tests/test_negative_auth.py: 22 warnings
+tests/test_positive_auth.py: 4 warnings
+  c:\users\evgen\pycharmprojects\venv\lib\site-packages\pytest_selenium\pytest_selenium.py:208: DeprecationWarning: executable_path has been deprecated, please pass in a Service object
+    driver = driver_class(**driver_kwargs)
+
+tests/test_auth_page_elements.py: 13 warnings
+tests/test_negative_auth.py: 22 warnings
+tests/test_positive_auth.py: 4 warnings
+  C:\Users\evgen\PycharmProjects\venv\lib\site-packages\selenium\webdriver\chrome\webdriver.py:80: DeprecationWarning: desired_capabilities has been deprecated, please pass in a Service object
+    super().__init__(
+
+tests/test_auth_page_elements.py: 13 warnings
+tests/test_negative_auth.py: 22 warnings
+tests/test_positive_auth.py: 4 warnings
+  C:\Users\evgen\PycharmProjects\venv\lib\site-packages\selenium\webdriver\chrome\webdriver.py:80: DeprecationWarning: service_log_path has been deprecated, please pass in a Service object
+    super().__init__(
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+======================================================================================= short test summary info =======================================================================================
+FAILED tests/test_auth_page_elements.py::test_tab_phone - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":...
+FAILED tests/test_auth_page_elements.py::test_ad_slogan - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":...
+FAILED tests/test_auth_page_elements.py::test_auto_switch_tab[By email] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selec...
+FAILED tests/test_auth_page_elements.py::test_auto_switch_tab[By login] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selec...
+FAILED tests/test_auth_page_elements.py::test_auto_switch_tab[By LS] - AssertionError: FT-007 failed: Таб автоматически не изменился
+FAILED tests/test_auth_page_elements.py::test_auto_switch_tab[By phone] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selec...
+FAILED tests/test_auth_page_elements.py::test_forgot_password - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","sele...
+FAILED tests/test_auth_page_elements.py::test_user_agree - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector"...
+FAILED tests/test_negative_auth.py::test_auth_by_empty_email[Empty email] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css sel...
+FAILED tests/test_negative_auth.py::test_auth_by_empty_login[Empty login] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css sel...
+FAILED tests/test_negative_auth.py::test_auth_by_empty_login[Space login] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css sel...
+FAILED tests/test_negative_auth.py::test_auth_by_wrong_phone[Wrong phone number] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"...
+FAILED tests/test_negative_auth.py::test_auth_by_wrong_phone[Wrong email] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css sel...
+FAILED tests/test_negative_auth.py::test_auth_by_wrong_password[Phone: Wrong password] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"met...
+FAILED tests/test_negative_auth.py::test_auth_by_wrong_password[Email: Wrong password] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"met...
+FAILED tests/test_negative_auth.py::test_auth_by_bad_format_phone[Not correct numb] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method...
+FAILED tests/test_negative_auth.py::test_auth_by_bad_format_email[Not correct email] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"metho...
+FAILED tests/test_positive_auth.py::test_auth_by_phone - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"...
+FAILED tests/test_positive_auth.py::test_auth_by_email - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"...
+FAILED tests/test_positive_auth.py::test_auth_in_any_tab[By email] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector",...
+FAILED tests/test_positive_auth.py::test_auth_in_any_tab[By phone] - selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector",...
+ERROR tests/test_negative_auth.py::test_auth_by_empty_ls[Empty ls] - selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+======================================================= 21 failed, 9 passed, 2 skipped, 8 xfailed, 117 warnings, 1 error in 1725.09s (0:28:45) ========================================================
+
+(venv) C:\Users\evgen\PycharmProjects\Rostelecom>
