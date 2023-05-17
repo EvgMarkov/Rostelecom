@@ -1,13 +1,14 @@
-# Rostelecom
+
 Тестирование авторизации в ЛК "Ростелеком" https://b2c.passport.rt.ru/
 
 Требования описаны в документе по ссылке https://lms.skillfactory.ru/assets/courseware/v1/f78e146f0eb3ace247a28b07e66467de/asset-v1:SkillFactory+QAP-3.0+2021+type@asset+block/Требования_SSO_для_тестирования_last.doc 
 
 Реализованы тесты к "Стандартная авторизация по логину и паролю"<br>
 
-План тестирования 
+План тестирования https://docs.google.com/document/d/1A8VJr8j6uE7i2IWWjds_6C-_PlMZDfkzLA_TucRJ5rI/edit?usp=sharing
 
-Тест-кейсы 
+Тест-кейсы https://docs.google.com/spreadsheets/d/138bUrmjh2UZ7r_gHpKGr8qk1hxT77BbZD94z2Kx94Ng/edit?usp=sharing
+
 На вкладке "Форма авторизации" описаны тест-кейсы по проверке наличия на странице авторизации всех описанных в требованиях элементов<br>
 На вкладке "Авторизация" описаны тест-кейсы по авторизации в ЛК Ростелеком<br>
 Найденные баги описаны на вкладке "Баги" в документе с тест-кейсами
